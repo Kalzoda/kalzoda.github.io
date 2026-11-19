@@ -1,0 +1,802 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>KALZODA | Online Shopping</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f8f7f4;
+    color: #222;
+}
+
+header {
+    background: #171717;
+    color: white;
+    padding: 18px 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.logo {
+    color: #d9b77a;
+    font-size: 27px;
+    font-weight: bold;
+    letter-spacing: 3px;
+}
+
+nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 17px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+nav a:hover {
+    color: #d9b77a;
+}
+
+.hero {
+    min-height: 350px;
+    padding: 60px 20px;
+    background: linear-gradient(120deg, #222, #776d5e);
+    color: white;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero h1 {
+    font-size: 42px;
+    margin-bottom: 15px;
+}
+
+.hero p {
+    margin-bottom: 25px;
+    line-height: 1.6;
+}
+
+.main-button {
+    background: #d9b77a;
+    color: #171717;
+    padding: 13px 24px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.container {
+    padding: 45px 5%;
+}
+
+.section-title {
+    margin-bottom: 25px;
+}
+
+.section-title h2 {
+    font-size: 28px;
+    margin-bottom: 8px;
+}
+
+.section-title p {
+    color: #777;
+    line-height: 1.5;
+}
+
+.category-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+    gap: 20px;
+}
+
+.category-card {
+    background: white;
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.07);
+    text-decoration: none;
+    color: #222;
+}
+
+.category-card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    display: block;
+    background: #eee;
+}
+
+.category-card div {
+    padding: 17px;
+}
+
+.category-card h3 {
+    margin-bottom: 7px;
+}
+
+.category-card p {
+    color: #777;
+    font-size: 13px;
+}
+
+.category-card:hover {
+    transform: translateY(-3px);
+}
+
+.subcategory-menu {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin: 25px 0;
+}
+
+.subcategory-menu a {
+    background: #252525;
+    color: white;
+    text-decoration: none;
+    padding: 11px 17px;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.subcategory-menu a:hover {
+    background: #b9955c;
+}
+
+.subcategory {
+    padding-top: 25px;
+    margin-top: 25px;
+    border-top: 1px solid #e4ded5;
+    scroll-margin-top: 15px;
+}
+
+.subcategory h3 {
+    font-size: 21px;
+    margin-bottom: 18px;
+}
+
+.products {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(175px, 1fr));
+    gap: 18px;
+}
+
+.product {
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 9px rgba(0,0,0,0.07);
+}
+
+.product img {
+    display: block;
+    width: 100%;
+    height: 210px;
+    object-fit: cover;
+    background: #eee;
+}
+
+.product-info {
+    padding: 14px;
+}
+
+.product-info h4 {
+    margin-bottom: 9px;
+    font-size: 16px;
+}
+
+.price {
+    color: #99733e;
+    font-weight: bold;
+    margin-bottom: 13px;
+}
+
+.order-button {
+    display: block;
+    background: #242424;
+    color: white;
+    text-align: center;
+    padding: 11px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 13px;
+}
+
+.order-button:hover {
+    background: #99733e;
+}
+
+.back-link {
+    display: inline-block;
+    margin-bottom: 20px;
+    color: #876532;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.contact {
+    background: #222;
+    color: white;
+    text-align: center;
+    padding: 45px 20px;
+}
+
+.contact h2 {
+    margin-bottom: 15px;
+}
+
+.contact p {
+    margin: 10px 0;
+}
+
+.contact a {
+    color: #d9b77a;
+    text-decoration: none;
+}
+
+footer {
+    background: #111;
+    color: #aaa;
+    padding: 18px;
+    text-align: center;
+    font-size: 13px;
+}
+
+@media(max-width: 600px) {
+    header {
+        justify-content: center;
+        text-align: center;
+    }
+
+    nav {
+        justify-content: center;
+        gap: 12px;
+    }
+
+    .hero h1 {
+        font-size: 32px;
+    }
+
+    .category-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+    }
+
+    .category-card img {
+        height: 125px;
+    }
+
+    .category-card div {
+        padding: 12px;
+    }
+
+    .category-card h3 {
+        font-size: 15px;
+    }
+
+    .products {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+    }
+
+    .product img {
+        height: 155px;
+    }
+
+    .product-info {
+        padding: 10px;
+    }
+
+    .product-info h4 {
+        font-size: 14px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">KALZODA</div>
+
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#categories">Categories</a>
+        <a href="#contact">Contact</a>
+    </nav>
+</header>
+
+<section class="hero" id="home">
+    <h1>WEAR YOUR OWN STYLE.</h1>
+    <p>Fashion, footwear and technology — all in one place.</p>
+    <a href="#categories" class="main-button">EXPLORE OUR STORE</a>
+</section>
+
+<!-- MAIN CATEGORIES -->
+<section class="container" id="categories">
+
+    <div class="section-title">
+        <h2>Shop by Category</h2>
+        <p>Choose your favorite category to explore our collection.</p>
+    </div>
+
+    <div class="category-grid">
+
+        <a href="#women" class="category-card">
+            <img src="Women col.png" alt="Women's collection">
+            <div>
+                <h3>Women's Collection</h3>
+                <p>Clothes, shoes and accessories</p>
+            </div>
+        </a>
+
+        <a href="#men" class="category-card">
+            <img src="Men col.png" alt="Men's collection">
+            <div>
+                <h3>Men's Collection</h3>
+                <p>Clothes, shoes and accessories</p>
+            </div>
+        </a>
+
+        <a href="#kids" class="category-card">
+            <img src="Kids col.png" alt="Kids' collection">
+            <div>
+                <h3>Kids' Collection</h3>
+                <p>Clothes, shoes and accessories</p>
+            </div>
+        </a>
+
+        <a href="#electronics" class="category-card">
+            <img src="Elec col.png" alt="Electronics">
+            <div>
+                <h3>Electronics</h3>
+                <p>Phones, TVs, computers and accessories</p>
+            </div>
+        </a>
+
+    </div>
+</section>
+
+
+<!-- WOMEN -->
+<section class="container" id="women">
+
+    <a href="#categories" class="back-link">← All Categories</a>
+
+    <div class="section-title">
+        <h2>Women's Collection</h2>
+        <p>Discover your everyday style.</p>
+    </div>
+
+    <div class="subcategory-menu">
+        <a href="#women-clothes">Clothes</a>
+        <a href="#women-shoes">Shoes</a>
+        <a href="#women-accessories">Accessories</a>
+    </div>
+
+    <div class="subcategory" id="women-clothes">
+        <h3>Women's Clothes</h3>
+        <div class="products">
+
+            <div class="product">
+                <img src="image (00).jpg" alt="Women's dress">
+                <div class="product-info">
+                    <h4>Women's Dress</h4>
+                    <p class="price">Price: 3000 ETB </p>
+                    <a class="order-button" href="https://wa.me/251946571360?text=I%20want%20the%20women%20dress">Order on WhatsApp</a>
+                </div>
+            </div>
+
+            <div class="product">
+                <img src="crop.png" alt="Women's top">
+                <div class="product-info">
+                    <h4>Women's Top</h4>
+                    <p class="price">Price: Contact us</p>
+                    <a class="order-button" href="https://wa.me/251946571360?text=I%20want%20the%20women%20top">Order on WhatsApp</a>
+                </div>
+            </div>
+
+            <div class="product">
+                <img src="jeans.png
+            " alt="Women's jeans">
+                <div class="product-info">
+                    <h4>Women's Jeans</h4>
+                    <p class="price">Price: Contact us</p>
+                    <a class="order-button" href="https://wa.me/251946571360?text=I%20want%20women%20jeans">Order on WhatsApp</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="subcategory" id="women-shoes">
+        <h3>Women's Shoes</h3>
+        <div class="products">
+
+            <div class="product">
+                <img src="shoes image.jpeg" alt="Women's sneakers">
+                <div class="product-info">
+                    <h4>Women's Sneakers</h4>
+                    <p class="price">Price: 3000 ETB </p>
+                    <a class="order-button" href="https://wa.me/251946571360?text=I%20want%20women%20sneakers">Order on WhatsApp</a>
+                </div>
+            </div>
+
+            <div class="product">
+                <img src="images (26).jpeg" alt="Women's sports shoes">
+                <div class="product-info">
+                    <h4>Women's Sports Shoes</h4>
+                    <p class="price">Price: 2500 ETB </p>
+                    <a class="order-button" href="https://wa.me/251946571360?text=I%20want%20women%20sports%20shoes">Order on WhatsApp</a>
+                </div>
+            </div>
+
+          <div class="product">
+    <img src="images/women-sneakers-2.jpg" alt="Women's sneakers">
+    <div class="product-info">
+        <h4>Women's Sneakers - Model 2</h4>
+        <p class="price">Price: 2,500 ETB</p>
+        <a class="order-button" href="https://wa.me/251946571360?text=I%20want%20womens%20sneakers%20model%202">Order on WhatsApp</a>
+    </div>
+</div>
+        </div>
+    </div>
+
+    <div class="subcategory" id="women-accessories">
+        <h3>Women's Accessories</h3>
+        <div class="products">
+
+            <div class="product">
+                <img src="images/women-bag.jpg" alt="Women's handbag">
+                <div class="product-info">
+                    <h4>Handbag</h4>
+                    <p class="price">Price: Contact us</p>
+                    <a class="order-button" href="https://wa.me/251946571360?text=I%20want%20a%20handbag">Order on WhatsApp</a>
+                </div>
+            </div>
+
+            <div class="product">
+                <img src="images/women-watch.jpg" alt="Women's watch">
+                <div class="product-info">
+                    <h4>Women's Watch</h4>
+                    <p class="price">Price: Contact us</p>
+                    <a class="order-button" href="https://wa.me/251946571360?text=I%20want%20a%20womens%20watch">Order on WhatsApp</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+<!-- MEN -->
+<section class="container" id="men">
+
+    <a href="#categories" class="back-link">← All Categories</a>
+
+    <div class="section-title">
+        <h2>Men's Collection</h2>
+        <p>Modern looks for every occasion.</p>
+    </div>
+
+    <div class="subcategory-menu">
+        <a href="#men-clothes">Clothes</a>
+        <a href="#men-shoes">Shoes</a>
+        <a href="#men-accessories">Accessories</a>
+    </div>
+
+    <div class="subcategory" id="men-clothes">
+        <h3>Men's Clothes</h3>
+        <div class="products">
+
+            <div class="product">
+                <img src="images/men-shirt.jpg" alt="Men's shirt">
+                <div class="product-info">
+                    <h4>Men's Shirt</h4>
+                    <p class="price">Price: Contact us</p>
+                    <a class="order-button" href="https://wa.me/251946571360?text=I%20want%20a%20mens%20shirt">Order on WhatsApp</a>
+                </div>
+            </div>
+
+            <div class="product">
+                <img src="images/men-tshirt.jpg" alt="Men's T-shirt">
+                <div class="product-info">
+                    <h4>Men's T-Shirt</h4>
+                    <p class="price">Price: Contact us</p>
+                    <a class="order-button" href="https://wa.me/251946571360?text=I%20want%20a%20mens%20tshirt">Order on WhatsApp</a>
+                </div>
+            </div>
+
+            <div class="product">
+                <img src="images/men-trousers.jpg" alt="Men's trousers">
+                <div class="product-info">
+                    <h4>Men's Trousers</h4>
+                    <p class="price">Price: Contact us</p>
+                    <a class="order-button" href="https://wa.me/251946571360?text=I%20want%20mens%20trousers">Order on WhatsApp</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="subcategory" id="men-shoes">
+        <h3>Men's Shoes</h3>
+        <div class="products">
+
+            <div class="product">
+                <img src="images/men-sneakers.jpg" alt="Men's sneakers">
+                <div class="product-info">
+                    <h4>Men's Sneakers</h4>
+                    <p class="price">Price: Contact us</p>
+                    <a class="order-button" href="https://wa.me/251946571360?text=I%20want%20mens%20sneakers">Order on WhatsApp</a>
+                </div>
+            </div>
+
+            <div class="product">
+                <img src="images/men-sport.jpg" alt="Men's sports shoes">
+                <div class="product-info">
+                    <h4>Men's Sports Shoes</h4>
+                    <p class="price">Price: Contact us</p>
+                    <a class="order-button" href="https://wa.me/251946571360?text=I%20want%20mens%20sports%20shoes">Order on WhatsApp</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="subcategory" id="men-accessories">
+        <h3>Men's Accessories</h3>
+        <div class="products">
+
+            <div class="product">
+                <img src="images/men-watch.jpg" alt="Men's watch">
+                <div class="product-info">
+                    <h4>Men's Watch</h4>
+                    <p class="price">Price: Contact us</p>
+                    <a class="order-button" href="https://wa.me/251946571360?text=I%20want%20a%20mens%20watch">Order on WhatsApp</a>
+                </div>
+            </div>
+
+            <div class="product">
+                <img src="images/men-wallet.jpg" alt="Men's wallet">
+                <div class="product-info">
+                    <h4>Men's Wallet</h4>
+                    <p class="price">Price: Contact us</p>
+                    <a class="order-button" href="https://wa.me/251946571360?text=I%20want%20a%20wallet">Order on WhatsApp</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+<!-- KIDS -->
+<section class="container" id="kids">
+
+    <a href="#categories" class="back-link">← All Categories</a>
+
+    <div class="section-title">
+        <h2>Kids' Collection</h2>
+        <p>Lovely styles for little ones.</p>
+    </div>
+
+    <div class="subcategory-menu">
+        <a href="#kids-clothes">Clothes</a>
+        <a href="#kids-shoes">Shoes</a>
+        <a href="#kids-accessories">Accessories</a>
+    </div>
+
+    <div class="subcategory" id="kids-clothes">
+        <h3>Kids' Clothes</h3>
+        <div class="products">
+
+            <div class="product">
+                <img src="images/kids-boys.jpg" alt="Boys' outfit">
+                <div class="product-info">
+                    <h4>Boys' Outfit</h4>
+                    <p class="price">Price: Contact us</p>
+                    <a class="order-button" href="https://wa.me/251946571360?text=I%20want%20boys%20clothes">Order on WhatsApp</a>
+                </div>
+            </div>
+
+            <div class="product">
+                <img src="images/kids-girls.jpg" alt="Girls' outfit">
+                <div class="product-info">
+                    <h4>Girls' Outfit</h4>
+                    <p class="price">Price: Contact us</p>
+                    <a class="order-button" href="https://wa.me/251946571360?text=I%20want%20girls%20clothes">Order on WhatsApp</a>
+                </div>
+            </div>
+
+            <div class="product">
+                <img src="images/kids-baby.jpg" alt="Baby clothes">
+                <div class="product-info">
+                    <h4>Baby Clothes</h4>
+                    <p class="price">Price: Contact us</p>
+                    <a class="order-button" href="https://wa.me/251946571360?text=I%20want%20baby%20clothes">Order on WhatsApp</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="subcategory" id="kids-shoes">
+        <h3>Kids' Shoes</h3>
+        <div class="products">
+
+            <div class="product">
+                <img src="images/kids-shoes.jpg" alt="Kids' shoes">
+                <div class="product-info">
+                    <h4>Kids' Shoes</h4>
+                    <p class="price">Price: Contact us</p>
+                    <a class="order-button" href="https://wa.me/251946571360?text=I%20want%20kids%20shoes">Order on WhatsApp</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="subcategory" id="kids-accessories">
+        <h3>Kids' Accessories</h3>
+        <div class="products">
+
+            <div class="product">
+                <img src="images/kids-bag.jpg" alt="Kids' backpack">
+                <div class="product-info">
+                    <h4>Kids' Backpack</h4>
+                    <p class="price">Price: Contact us</p>
+                    <a class="order-button" href="https://wa.me/251946571360?text=I%20want%20a%20kids%20bag">Order on WhatsApp</a>
+                </div>
+            </div>
+
+            <div class="product">
+                <img src="images/kids-hat.jpg" alt="Kids' hat">
+                <div class="product-info">
+                    <h4>Kids' Hat</h4>
+                    <p class="price">Price: Contact us</p>
+                    <a class="order-button" href="https://wa.me/251946571360?text=I%20want%20a%20kids%20hat">Order on WhatsApp</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+<!-- ELECTRONICS -->
+<section class="container" id="electronics">
+
+    <a href="#categories" class="back-link">← All Categories</a>
+
+    <div class="section-title">
+        <h2>Electronics</h2>
+        <p>Technology for your everyday life.</p>
+    </div>
+
+    <div class="subcategory-menu">
+        <a href="#electronics-phones">Phones</a>
+        <a href="#electronics-tvs">TVs</a>
+        <a href="#electronics-computers">Computers</a>
+        <a href="#electronics-accessories">Accessories</a>
+    </div>
+
+    <div class="subcategory" id="electronics-phones">
+        <h3>Mobile Phones</h3>
+        <div class="products">
+
+            <div class="product">
+                <img src="images/phone.jpg" alt="Smartphone">
+                <div class="product-info">
+                    <h4>Smartphone</h4>
+                    <p class="price">Price: Contact us</p>
+                    <a class="order-button" href="https://wa.me/251946571360?text=I%20want%20a%20smartphone">Order on WhatsApp</a>
+                </div>
+            </div>
+
+            <div class="product">
+                <img src="images/phone2.jpg" alt="Another smartphone">
+                <div class="product-info">
+                    <h4>Smartphone Model 2</h4>
+                    <p class="price">Price: Contact us</p>
+                    <a class="order-button" href="https://wa.me/251946571360?text=I%20want%20smartphone%20model%202">Order on WhatsApp</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="subcategory" id="electronics-tvs">
+        <h3>Televisions</h3>
+        <div class="products">
+
+            <div class="product">
+                <img src="images/tv.jpg" alt="Smart TV">
+                <div class="product-info">
+                    <h4>Smart TV</h4>
+                    <p class="price">Price: Contact us</p>
+                    <a class="order-button" href="https://wa.me/251946571360?text=I%20want%20a%20smart%20TV">Order on WhatsApp</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="subcategory" id="electronics-computers">
+        <h3>Computers & Laptops</h3>
+        <div class="products">
+
+            <div class="product">
+                <img src="images/laptop.jpg" alt="Laptop">
+                <div class="product-info">
+                    <h4>Laptop</h4>
+                    <p class="price">Price: Contact us</p>
+                    <a class="order-button" href="https://wa.me/251946571360?text=I%20want%20a%20laptop">Order on WhatsApp</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="subcategory" id="electronics-accessories">
+        <h3>Electronic Accessories</h3>
+        <div class="products">
+
+            <div class="product">
+                <img src="images/headphones.jpg" alt="Headphones">
+                <div class="product-info">
+                    <h4>Headphones</h4>
+                    <p class="price">Price: Contact us</p>
+                    <a class="order-button" href="https://wa.me/251946571360?text=I%20want%20headphones">Order on WhatsApp</a>
+                </div>
+            </div>
+
+            <div class="product">
+                <img src="images/speaker.jpg" alt="Speaker">
+                <div class="product-info">
+                    <h4>Speaker</h4>
+                    <p class="price">Price: Contact us</p>
+                    <a class="order-button" href="https://wa.me/251946571360?text=I%20want%20a%20speaker">Order on WhatsApp</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+    <h2>Contact KALZODA</h2>
+    <p>Have a question or want to place an order?</p>
+    <p>WhatsApp: <a href="https://wa.me/251946571360">Chat with us</a></p>
+    <p>Thank you for shopping with KALZODA.</p>
+</section>
+
+<footer>
+    <p>© 2026 KALZODA. All Rights Reserved.</p>
+</footer>
+
+</body>
+</html>
